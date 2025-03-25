@@ -9,30 +9,43 @@ import {Menu, X} from "lucide-react";
 const Header = () => {
 
     const [isMenuOpen, setIsMenuOpen] = useState(false)
+    const handleClick = (e : React.MouseEvent<HTMLAnchorElement, MouseEvent>, href : string) => {
+        e.preventDefault();
+        const targetId = href.replace("#", "");
+        const targetElement = document.getElementById(targetId);
+
+        if (targetElement) {
+            targetElement.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+    };
 
     return (
-        <header className="sticky top-0 z-40 w-full border-b bg-[#faf7f2]/80 backdrop-blur-sm">
+        <header className="sticky top-0 z-40 w-full  bg-background/80 backdrop-blur-sm">
             <div className="container flex h-16 items-center justify-between">
                 <div className="flex items-center gap-2">
-                    <span className="text-xl font-serif font-medium text-[#3c3630]">Guillaume STAUB</span>
+                    <span className="text-xl  font-medium text-primary ">Guillaume STAUB</span>
                 </div>
                 <nav className="hidden md:flex gap-6">
-                    <Link href="#about"
-                          className="text-sm font-medium text-[#3c3630] transition-colors hover:text-[#be9b7b]">
+                    <Link href="#about" onClick={(e) => handleClick(e, "#about")}
+                          className="text-sm font-medium  transition-colors text-muted hover:text-primary">
                         À propos
                     </Link>
                     <Link
-                        href="#creations"
-                        className="text-sm font-medium text-[#3c3630] transition-colors hover:text-[#be9b7b]"
+                        href="#creations" onClick={(e) => handleClick(e, "#creations")}
+                        className="text-sm font-medium  transition-colors text-muted hover:text-primary"
                     >
                         Mes Créations
                     </Link>
-                    <Link href="#skills"
-                          className="text-sm font-medium text-[#3c3630] transition-colors hover:text-[#be9b7b]">
+                    <Link href="#skills" onClick={(e) => handleClick(e, "#skills")}
+                          className="text-sm font-medium  transition-colors text-muted hover:text-primary">
                         Compétences
                     </Link>
-                    <Link href="#contact"
-                          className="text-sm font-medium text-[#3c3630] transition-colors hover:text-[#be9b7b]">
+                    <Link href="#experiences" onClick={(e) => handleClick(e, "#experiences")}
+                          className="text-sm font-medium  transition-colors text-muted hover:text-primary">
+                        Mes expériences
+                    </Link>
+                    <Link href="#contact" onClick={(e) => handleClick(e, "#contact")}
+                          className="text-sm font-medium transition-colors text-muted hover:text-primary">
                         Contact
                     </Link>
                 </nav>
@@ -41,29 +54,51 @@ const Header = () => {
                         <nav className="flex flex-col space-y-4">
                             <Link
                                 href="#about"
-                                className="text-sm font-medium text-[#3c3630] transition-colors hover:text-[#be9b7b]"
-                                onClick={() => setIsMenuOpen(false)}
+                                className="text-sm font-medium text-primary transition-colors hover:text-primary/80"
+                                onClick={(e) => {
+                                    handleClick(e, "#about")
+                                    setIsMenuOpen(false)
+                                }}
                             >
                                 À propos
                             </Link>
                             <Link
                                 href="#creations"
-                                className="text-sm font-medium text-[#3c3630] transition-colors hover:text-[#be9b7b]"
-                                onClick={() => setIsMenuOpen(false)}
+                                className="text-sm font-medium text-primary transition-colors hover:text-primary/80"
+                                onClick={(e) => {
+                                    handleClick(e, "#creations")
+                                    setIsMenuOpen(false)
+                                }}
                             >
                                 Mes Créations
                             </Link>
                             <Link
                                 href="#skills"
-                                className="text-sm font-medium text-[#3c3630] transition-colors hover:text-[#be9b7b]"
-                                onClick={() => setIsMenuOpen(false)}
+                                className="text-sm font-medium text-primary transition-colors hover:text-primary/80"
+                                onClick={(e) => {
+                                    handleClick(e, "#skills")
+                                    setIsMenuOpen(false)
+                                }}
                             >
                                 Compétences
                             </Link>
                             <Link
+                                href="#experiences"
+                                className="text-sm font-medium text-primary transition-colors hover:text-primary/80"
+                                onClick={(e) => {
+                                    handleClick(e, "#experiences")
+                                    setIsMenuOpen(false)
+                                }}
+                            >
+                                Mes expériences
+                            </Link>
+                            <Link
                                 href="#contact"
-                                className="text-sm font-medium text-[#3c3630] transition-colors hover:text-[#be9b7b]"
-                                onClick={() => setIsMenuOpen(false)}
+                                className="text-sm font-medium text-primary transition-colors hover:text-primary/80"
+                                onClick={(e) => {
+                                    handleClick(e, "#contact")
+                                    setIsMenuOpen(false)
+                                }}
                             >
                                 Contact
                             </Link>
@@ -74,7 +109,7 @@ const Header = () => {
                     <Button
                         variant="ghost"
                         size="icon"
-                        className="text-[#3c3630] hover:text-[#be9b7b] hover:bg-transparent"
+                        className="text-primary hover:text-primary/80 hover:bg-transparent"
                         onClick={() => setIsMenuOpen(!isMenuOpen)}
                         aria-label="Menu"
                     >
