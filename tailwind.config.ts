@@ -25,12 +25,13 @@ const config = {
                 background: "hsl(var(--background))",
                 foreground: "hsl(var(--foreground))",
                 primary: {
-                    DEFAULT: "#be9b7b",
-                    foreground: "#ffffff",
+                    DEFAULT: "hsl(var(--primary))",
+                    foreground: "hsl(var(--primary-foreground))",
                 },
                 secondary: {
-                    DEFAULT: "#3c3630",
-                    foreground: "#ffffff",
+                    DEFAULT: "hsl(var(--secondary))",
+                    foreground: "hsl(var(--secondary-foreground))",
+
                 },
                 destructive: {
                     DEFAULT: "hsl(var(--destructive))",
@@ -75,7 +76,6 @@ const config = {
             fontFamily: {
                 'poppins': ['Poppins', 'sans-serif'],
             },
-
         },
     },
     plugins: [require("tailwindcss-animate")],
