@@ -1,22 +1,51 @@
+"use client";
+
 import React from 'react';
 import {Button} from "@/components/ui/button";
 import Image from "next/image";
-
+import { useEffect, useRef } from "react";
+import anime from "animejs";
 const HeroSection = () => {
+    const handRef = useRef(null);
+
+    useEffect(() => {
+        anime({
+            targets: handRef.current,
+            rotate: [
+                { value: -15, duration: 200 },
+                { value: 15, duration: 200 },
+                { value: -15, duration: 200 },
+                { value: 0, duration: 200 }
+            ],
+            loop: true,
+            easing: "easeInOutSine",
+            duration: 1000
+        });
+    }, []);
+
+    const handleClick = (e : React.MouseEvent<HTMLButtonElement, MouseEvent>, href : string) => {
+        e.preventDefault();
+        const targetId = href.replace("#", "");
+        const targetElement = document.getElementById(targetId);
+
+        if (targetElement) {
+            targetElement.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+    };
     return (
         <section className="w-full py-12 md:py-24 lg:py-32">
             <div className="container px-4 md:px-6">
                 <div className="flex flex-col items-center justify-center space-y-4 text-center">
                     <div className="space-y-2">
-                        <h1 className="text-3xl font-serif font-medium tracking-tighter text-[#3c3630] sm:text-4xl md:text-5xl lg:text-6xl">
-                            Staub Heaven
+                        <h1 className="text-3xl font-serif font-medium tracking-tighter text-muted sm:text-4xl md:text-5xl lg:text-6xl">
+                            Hello, je suis Guillaume <span ref={handRef} className="inline-block ">👋🏻</span> 🧑🏻‍🍳
                         </h1>
-                        <p className="mx-auto max-w-[700px] text-[#6c6560] md:text-xl">
+                        <p className="mx-auto max-w-[700px] text-muted md:text-xl">
                             Portfolio culinaire - Recherche une entreprise pour un CAP Pâtisserie à partir de septembre 2025.
                         </p>
                     </div>
-                    <div className="w-full max-w-sm space-y-2">
-                        <Button className="bg-[#be9b7b] hover:bg-[#a88967] text-white">Découvrir mes créations</Button>
+                    <div className="w-full max-w-sm h-full space-y-2">
+                        <Button className="bg-primary hover:bg-primary/90 text-white" onClick={(e) => handleClick(e, "#creations")}>Découvrir mes créations</Button>
                     </div>
                 </div>
             </div>
