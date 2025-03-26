@@ -25,17 +25,18 @@ export default function Home() {
 
                 <CreationsSection/>
 
-                {/* Skills Section */}
+
                 <SkillsSection/>
+
                 <ParcoursSection/>
+
                 <ExperiencesSection/>
 
-                {/* Contact Section */}
                 <ContactSection/>
             </main>
 
-            {/* Footer */}
-           <Footer/>
+
+            <Footer/>
         </div>
     )
 }

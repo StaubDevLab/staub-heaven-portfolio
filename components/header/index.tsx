@@ -1,13 +1,14 @@
 "use client";
 import React, {useState} from 'react';
-
+import { useSession } from "next-auth/react"
 import Link from "next/link";
 
 import {Button} from "@/components/ui/button";
 import {Menu, X} from "lucide-react";
+import HeaderAvatar from "@/components/header-avatar";
 
 const Header = () => {
-
+    const { data: session } = useSession()
     const [isMenuOpen, setIsMenuOpen] = useState(false)
     const handleClick = (e : React.MouseEvent<HTMLAnchorElement, MouseEvent>, href : string) => {
         e.preventDefault();
@@ -25,7 +26,7 @@ const Header = () => {
                 <div className="flex items-center gap-2">
                     <span className="text-xl  font-medium text-primary ">Guillaume STAUB</span>
                 </div>
-                <nav className="hidden md:flex gap-6">
+                <nav className="hidden md:flex gap-6 items-center">
                     <Link href="#about" onClick={(e) => handleClick(e, "#about")}
                           className="text-sm font-medium  transition-colors text-muted hover:text-primary">
                         À propos
@@ -48,10 +49,13 @@ const Header = () => {
                           className="text-sm font-medium transition-colors text-muted hover:text-primary">
                         Contact
                     </Link>
+                    <HeaderAvatar/>
                 </nav>
+
                 {isMenuOpen && (
-                    <div className="absolute top-16 left-0 right-0 bg-[#faf7f2] border-b shadow-md p-4 md:hidden">
+                    <div className="absolute top-16 left-0 right-0 bg-background border-b shadow-md p-4 md:hidden">
                         <nav className="flex flex-col space-y-4">
+
                             <Link
                                 href="#about"
                                 className="text-sm font-medium text-primary transition-colors hover:text-primary/80"
@@ -102,10 +106,11 @@ const Header = () => {
                             >
                                 Contact
                             </Link>
+
                         </nav>
                     </div>
                 )}
-                <div className="md:hidden">
+                <div className="md:hidden flex items-center gap-2">
                     <Button
                         variant="ghost"
                         size="icon"
@@ -115,7 +120,9 @@ const Header = () => {
                     >
                         {isMenuOpen ? <X className="h-5 w-5"/> : <Menu className="h-5 w-5"/>}
                     </Button>
+                    <HeaderAvatar/>
                 </div>
+
             </div>
         </header>
     );
