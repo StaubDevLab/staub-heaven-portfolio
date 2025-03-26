@@ -94,6 +94,7 @@ export default function CreationUpdateForm({ creationId, onSuccess }: CreationUp
 
             onSuccess();
         } catch (error) {
+            console.log(error)
             toast("Une erreur est survenue lors de la mise à jour.", {style:{backgroundColor:"red"}});
         }
     };
