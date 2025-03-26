@@ -11,7 +11,7 @@ const poppins = Poppins({
 
 export const metadata: Metadata = {
     title: "Guillaume STAUB - Portfolio culinaire",
-    description: "Portfolio de pâtisserie pour candidature à l'École Internationale de Pâtisserie",
+    description: "Portfolio culinaire - Reconversion CAP Pâtisserie",
 }
 
 export default function RootLayout({
