@@ -2,7 +2,7 @@ import { auth } from "@/auth";
 import {prisma} from "@/prisma";
 import {NextResponse} from "next/server";
 
-export const GET = async (res: Request) => {
+export const GET = async () => {
 
     try {
 
@@ -17,7 +17,7 @@ export const GET = async (res: Request) => {
 
 }
 
-export const POST = async (req: Request, res: Request) => {
+export const POST = async (req: Request) => {
     const session = await auth();
     if (!session) {
         return NextResponse.json({error: 'Unauthorized'},

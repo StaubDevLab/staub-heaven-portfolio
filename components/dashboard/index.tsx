@@ -26,6 +26,7 @@ export default function Dashboard() {
             setCreations(data);
             console.log(data)
         } catch (error) {
+            console.log(error)
             toast("Impossible de charger les créations.", {style: {background: "#FF0000", color: "#FFFFFF"}});
         } finally {
             setLoading(false);

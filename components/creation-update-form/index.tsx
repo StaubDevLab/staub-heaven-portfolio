@@ -75,7 +75,6 @@ export default function CreationUpdateForm({ creationId, onSuccess }: CreationUp
         fetchCreation();
     }, [creationId]);
 
-    // Soumettre les modifications
     const onSubmit = async (data: CreationFormData) => {
         try {
             const response = await fetch(`http://localhost:3000/api/creation/${creationId}`, {
