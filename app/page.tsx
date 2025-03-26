@@ -1,4 +1,3 @@
-import Header from "@/components/header";
 import HeroSection from "@/components/hero_section";
 import AboutSection from "@/components/about";
 import CreationsSection from "@/components/creation-section";
@@ -7,15 +6,17 @@ import ParcoursSection from "@/components/parcours-section";
 import ExperiencesSection from "@/components/experiences-section";
 import ContactSection from "@/components/contact-section";
 import Footer from "@/components/footer";
+import Header from "@/components/header";
+import type React from "react";
 
 export default function Home() {
 
 
     return (
-        <div className="flex min-h-screen flex-col">
 
+
+        <>
             <Header/>
-
             <main className="flex-1">
 
                 <HeroSection/>
@@ -37,7 +38,7 @@ export default function Home() {
 
 
             <Footer/>
-        </div>
+        </>
     )
 }
 

@@ -1,6 +1,5 @@
 "use client";
 import React, {useState} from 'react';
-import { useSession } from "next-auth/react"
 import Link from "next/link";
 
 import {Button} from "@/components/ui/button";
@@ -8,16 +7,21 @@ import {Menu, X} from "lucide-react";
 import HeaderAvatar from "@/components/header-avatar";
 
 const Header = () => {
-    const { data: session } = useSession()
+
     const [isMenuOpen, setIsMenuOpen] = useState(false)
     const handleClick = (e : React.MouseEvent<HTMLAnchorElement, MouseEvent>, href : string) => {
         e.preventDefault();
-        const targetId = href.replace("#", "");
-        const targetElement = document.getElementById(targetId);
+        if (href.startsWith("/")) {
+            window.location.href = href
+        } else {
+            const targetId = href.replace("#", "");
+            const targetElement = document.getElementById(targetId);
 
-        if (targetElement) {
-            targetElement.scrollIntoView({ behavior: "smooth", block: "start" });
+            if (targetElement) {
+                targetElement.scrollIntoView({ behavior: "smooth", block: "start" });
+            }
         }
+
     };
 
     return (
@@ -87,7 +91,7 @@ const Header = () => {
                                 Compétences
                             </Link>
                             <Link
-                                href="#experiences"
+                                href="/#experiences"
                                 className="text-sm font-medium text-primary transition-colors hover:text-primary/80"
                                 onClick={(e) => {
                                     handleClick(e, "#experiences")
@@ -97,7 +101,7 @@ const Header = () => {
                                 Mes expériences
                             </Link>
                             <Link
-                                href="#contact"
+                                href="/#contact"
                                 className="text-sm font-medium text-primary transition-colors hover:text-primary/80"
                                 onClick={(e) => {
                                     handleClick(e, "#contact")

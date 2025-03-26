@@ -3,6 +3,7 @@ import type {Metadata} from "next"
 import {Poppins} from "next/font/google"
 import "./globals.css"
 import {SessionProvider} from "next-auth/react";
+import Header from "@/components/header";
 
 const poppins = Poppins({
     subsets: ["latin"],
@@ -22,7 +23,10 @@ export default function RootLayout({
     return (
         <html lang="fr">
         <SessionProvider>
-            <body className={`${poppins.className} `}>{children}</body>
+            <body className={`${poppins.className} flex min-h-screen flex-col`}>
+
+            {children}
+            </body>
         </SessionProvider>
         </html>
     )

@@ -14,13 +14,13 @@ import Link from "next/link";
 export default function HeaderAvatar() {
     const {data: session, status} = useSession()
     const name = `${session?.user?.name?.split(" ")[0][0]}${session?.user?.name?.split(" ")[1][0]}`
-
+    const image = session?.user?.image ? session.user.image : name
     return (
         <>
             {session && status === "authenticated" && session?.user?.image && <DropdownMenu >
                 <DropdownMenuTrigger asChild className={"cursor-pointer"}>
                     <Avatar >
-                        <AvatarImage src={session?.user?.image} alt="Photo google" />
+                        <AvatarImage src={image} alt="Photo google" />
                         <AvatarFallback className={"bg-primary text-white"}>{name}</AvatarFallback>
                     </Avatar>
                 </DropdownMenuTrigger>
