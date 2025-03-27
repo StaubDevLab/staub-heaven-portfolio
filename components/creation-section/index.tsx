@@ -1,13 +1,35 @@
 "use client";
-import { useEffect, useRef } from "react";
+import {useEffect, useRef, useState} from "react";
 import anime from "animejs";
 import Image from "next/image";
 import { Card, CardContent } from "@/components/ui/card";
+import {Creation} from "@/types/creation";
+import {getCreations} from "@/actions/creations-actions";
+import {Skeleton} from "@/components/ui/skeleton";
 
 export default function CreationsSection() {
     const cardsRef = useRef<HTMLDivElement[]>([]);
     const hasAnimated = useRef<boolean>(false);
+    const [creations, setCreations] = useState<Creation[]>([]);
+    const [loading, setLoading] = useState(true);
+    const fetchCreations = async () => {
+        try {
+            const data = await getCreations();
+            setCreations(data);
+        } catch (error) {
+            console.log(error)
+        } finally {
+            setLoading(false);
+        }
+    };
 
+
+    useEffect(() => {
+        setLoading(true)
+        fetchCreations()
+
+
+    }, []);
     useEffect(() => {
         if (!cardsRef.current || hasAnimated.current) return;
 
@@ -38,19 +60,23 @@ export default function CreationsSection() {
         });
 
         return () => observer.disconnect(); // Cleanup à la suppression du composant
-    }, []);
+    }, [creations]);
 
-    const creations = [
-        { title: "Unicorn Cake", image: "/creations/unicorn_cake_1.jpeg" },
-        { title: "Flan pâtissier", image: "/creations/flan_2.jpeg" },
-        { title: "Banana Bread Vegan", image: "/creations/banana_bread.jpeg" },
-        { title: "Cookies Vegan", image: "/creations/vegan_cookie.jpeg" },
-        { title: "Pain surprise maison", image: "/creations/bread.jpeg" },
-        { title: "Galette des rois feuilletage maison", image: "/creations/galette.jpeg" },
-        { title: "Bûche de Noël façon forêt noire", image: "/creations/buche.jpeg" },
-        { title: "Brioche au levain chef", image: "/creations/brioche.jpeg" },
-        { title: "Cake aux mûres des bois", image: "/creations/cake.jpeg" },
-    ];
+    if (creations.length === 0) {
+        return <p className="text-center text-muted-foreground">Aucune création trouvée.</p>;
+    }
+    if (loading) {
+        return (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                {Array(3)
+                    .fill(0)
+                    .map((_, index) => (
+                        <Skeleton key={index} className="h-64 w-full"/>
+                    ))}
+            </div>
+        );
+    }
+
 
     return (
         <section id="creations" className="w-full py-12 md:py-24 lg:py-32 bg-background">
@@ -74,7 +100,7 @@ export default function CreationsSection() {
                         >
                             <div className="relative h-96"> {/* Format portrait */}
                                 <Image
-                                    src={item.image || "/placeholder.svg"}
+                                    src={item.coverImage || "/placeholder.svg"}
                                     alt={item.title}
                                     fill
                                     className="object-cover transition-transform duration-300 hover:scale-105"

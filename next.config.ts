@@ -10,7 +10,23 @@ const nextConfig: NextConfig = {
                 pathname: '/**',
                 search: '',
             },
+            {
+                protocol: 'https',
+                hostname: 'staub-heaven-portfolio.s3.eu-west-3.amazonaws.com',
+                port: '',
+                pathname: '/**',
+            },
         ],
+    },
+    experimental: {
+        serverActions: {
+            bodySizeLimit: "10mb", // Augmente à 10 Mo (ou plus si nécessaire)
+        },
+    },
+    api: {
+        bodyParser: {
+            sizeLimit: "10mb", // Augmente également pour les API Routes
+        },
     },
 };
 

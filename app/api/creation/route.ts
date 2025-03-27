@@ -6,8 +6,8 @@ export const GET = async () => {
 
     try {
 
-        const services = await prisma.creation.findMany()
-        return NextResponse.json(services, {status: 200});
+        const creations = await prisma.creation.findMany()
+        return NextResponse.json(creations, {status: 200});
 
     } catch (error) {
         console.log(error)
@@ -17,36 +17,38 @@ export const GET = async () => {
 
 }
 
-export const POST = async (req: Request) => {
+export async function POST(req: Request) {
     const session = await auth();
-    if (!session) {
-        return NextResponse.json({error: 'Unauthorized'},
-            {status: 401, headers: {'Content-Type': 'application/json'}});
+    if (!session || !session.user) {
+        return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
+
     try {
-        const body = req ? await req.json() : null
+        const body = await req.json();
+        const { title, coverImage, description, images, order } = body;
+        console.log(body)
+        const creation = await prisma.creation.create({
+            data: {
+                title,
+                coverImage: coverImage || null,
+                description: description || null,
+                images: {
+                    create: images?.map((img: { url: string }) => ({ url: img.url })) || [],
+                },
+                order: order || null,
+            },
+        });
 
-         await prisma.creation.create(
-            {
-                data: {
-                    title: body.title,
-                    coverImage: body.coverImage,
-                    images: {
-                        create: body.images?.map((img: { url: string }) => ({ url: img.url })) || [], // Corrige ici
-                    },
-                    order: body.order,
-                    active: body.active,
-                    description: body.description,
-                }
-            }
-        )
-        return NextResponse.json({message: 'Creation ajoutée avec succès'}, {status: 200});
-
+        return NextResponse.json(
+            { message: "Création ajoutée avec succès", creation },
+            { status: 201 }
+        );
     } catch (error) {
-        console.log(error)
-        return NextResponse.json({error: error},
-            {status: 500, headers: {'Content-Type': 'application/json'}});
+        console.error("Erreur lors de la création :", error);
+        return NextResponse.json(
+            { error: "Une erreur est survenue lors de la création" },
+            { status: 500 }
+        );
     }
-
 }
 

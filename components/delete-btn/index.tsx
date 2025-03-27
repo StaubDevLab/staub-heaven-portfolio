@@ -15,7 +15,7 @@ import { toast } from "sonner";
 
 interface DeleteBtnProps {
     creationId: string;
-    onDelete: (id: string) => void; 
+    onDelete: (id: string) => void;
 }
 
 export default function DeleteBtn({ creationId, onDelete }: DeleteBtnProps) {
@@ -25,7 +25,7 @@ export default function DeleteBtn({ creationId, onDelete }: DeleteBtnProps) {
     const handleDelete = async () => {
         setIsDeleting(true);
         try {
-            const response = await fetch(`http://localhost:3000/api/creation/${creationId}`, {
+            const response = await fetch(`/api/creation/${creationId}`, {
                 method: "DELETE",
             });
 
