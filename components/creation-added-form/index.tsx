@@ -52,7 +52,7 @@ export default function CreationForm({ onSuccess }: CreationFormProps) {
 
     const onSubmit = async (data: CreationFormData) => {
         try {
-            const response = await fetch(`http://localhost:3000/api/creation`, {
+            const response = await fetch(`/api/creation`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json"},
                 body: JSON.stringify({

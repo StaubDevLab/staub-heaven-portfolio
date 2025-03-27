@@ -77,7 +77,7 @@ export default function CreationUpdateForm({ creationId, onSuccess }: CreationUp
 
     const onSubmit = async (data: CreationFormData) => {
         try {
-            const response = await fetch(`http://localhost:3000/api/creation/${creationId}`, {
+            const response = await fetch(`/api/creation/${creationId}`, {
                 method: "PUT",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
