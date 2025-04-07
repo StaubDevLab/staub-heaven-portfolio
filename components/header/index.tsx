@@ -5,21 +5,23 @@ import Link from "next/link";
 import {Button} from "@/components/ui/button";
 import {Menu, X} from "lucide-react";
 import HeaderAvatar from "@/components/header-avatar";
-
+import {usePathname} from "next/navigation";
+import { redirect } from 'next/navigation'
 const Header = () => {
 
     const [isMenuOpen, setIsMenuOpen] = useState(false)
+    const pathname = usePathname()
     const handleClick = (e : React.MouseEvent<HTMLAnchorElement, MouseEvent>, href : string) => {
         e.preventDefault();
-        if (href.startsWith("/")) {
-            window.location.href = href
-        } else {
+        if (pathname === "/") {
             const targetId = href.replace("#", "");
             const targetElement = document.getElementById(targetId);
 
             if (targetElement) {
                 targetElement.scrollIntoView({ behavior: "smooth", block: "start" });
             }
+        } else {
+            redirect(`/${href}`)
         }
 
     };
@@ -31,25 +33,25 @@ const Header = () => {
                     <span className="text-xl  font-medium text-primary ">Guillaume STAUB</span>
                 </div>
                 <nav className="hidden md:flex gap-6 items-center">
-                    <Link href="#about" onClick={(e) => handleClick(e, "#about")}
+                    <Link href={pathname === "/" ? "#about" : "/#about"} onClick={(e) => handleClick(e, "#about")}
                           className="text-sm font-medium  transition-colors text-muted hover:text-primary">
                         À propos
                     </Link>
                     <Link
-                        href="#creations" onClick={(e) => handleClick(e, "#creations")}
+                        href={pathname === "/" ? "#creations" : "/#creations"} onClick={(e) => handleClick(e, "#creations")}
                         className="text-sm font-medium  transition-colors text-muted hover:text-primary"
                     >
                         Mes Créations
                     </Link>
-                    <Link href="#skills" onClick={(e) => handleClick(e, "#skills")}
+                    <Link href={pathname === "/" ? "#skills" : "/#skills"} onClick={(e) => handleClick(e, "#skills")}
                           className="text-sm font-medium  transition-colors text-muted hover:text-primary">
                         Compétences
                     </Link>
-                    <Link href="#experiences" onClick={(e) => handleClick(e, "#experiences")}
+                    <Link href={pathname === "/" ? "#experiences" : "/#experiences"} onClick={(e) => handleClick(e, "#experiences")}
                           className="text-sm font-medium  transition-colors text-muted hover:text-primary">
                         Mes expériences
                     </Link>
-                    <Link href="#contact" onClick={(e) => handleClick(e, "#contact")}
+                    <Link href={pathname === "/" ? "#contact" : "/#contact"} onClick={(e) => handleClick(e, "#contact")}
                           className="text-sm font-medium transition-colors text-muted hover:text-primary">
                         Contact
                     </Link>
@@ -61,7 +63,7 @@ const Header = () => {
                         <nav className="flex flex-col space-y-4">
 
                             <Link
-                                href="#about"
+                                href={pathname === "/" ? "#about" : "/#about"}
                                 className="text-sm font-medium text-primary transition-colors hover:text-primary/80"
                                 onClick={(e) => {
                                     handleClick(e, "#about")
@@ -71,7 +73,7 @@ const Header = () => {
                                 À propos
                             </Link>
                             <Link
-                                href="#creations"
+                                href={pathname === "/" ? "#creations" : "/#creations"}
                                 className="text-sm font-medium text-primary transition-colors hover:text-primary/80"
                                 onClick={(e) => {
                                     handleClick(e, "#creations")
@@ -81,7 +83,7 @@ const Header = () => {
                                 Mes Créations
                             </Link>
                             <Link
-                                href="#skills"
+                                href={pathname === "/" ? "#skills" : "/#skills"}
                                 className="text-sm font-medium text-primary transition-colors hover:text-primary/80"
                                 onClick={(e) => {
                                     handleClick(e, "#skills")
@@ -91,7 +93,7 @@ const Header = () => {
                                 Compétences
                             </Link>
                             <Link
-                                href="/#experiences"
+                                href={pathname === "/" ? "#experiences" : "/#experiences"}
                                 className="text-sm font-medium text-primary transition-colors hover:text-primary/80"
                                 onClick={(e) => {
                                     handleClick(e, "#experiences")
@@ -101,7 +103,7 @@ const Header = () => {
                                 Mes expériences
                             </Link>
                             <Link
-                                href="/#contact"
+                                href={pathname === "/" ? "#contact" : "/#contact"}
                                 className="text-sm font-medium text-primary transition-colors hover:text-primary/80"
                                 onClick={(e) => {
                                     handleClick(e, "#contact")

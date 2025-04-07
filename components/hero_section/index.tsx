@@ -41,19 +41,21 @@ const HeroSection = () => {
                             Hello, je suis Guillaume <span ref={handRef} className="inline-block ">👋🏻</span> 🧑🏻‍🍳
                         </h1>
                         <p className="mx-auto max-w-[700px] text-muted md:text-xl">
-                            Portfolio culinaire - Recherche une entreprise pour un CAP Pâtisserie à partir de septembre 2025.
+                            Portfolio culinaire - Recherche une entreprise pour un CAP Pâtisserie à partir de septembre
+                            2025.
                         </p>
                     </div>
                     <div className="w-full max-w-sm h-full space-y-2">
-                        <Button className="bg-primary hover:bg-primary/90 text-white" onClick={(e) => handleClick(e, "#creations")}>Découvrir mes créations</Button>
+                        <Button className="bg-primary hover:bg-primary/90 text-white"
+                                onClick={(e) => handleClick(e, "#creations")}>Découvrir mes créations</Button>
                     </div>
                 </div>
             </div>
-            <div className="container px-4 md:px-6 mt-12">
-                <div className="relative h-[50vh] overflow-hidden rounded-lg">
+            <div className="container px-4 md:px-6 mt-12 text-center">
+                <div className="relative w-full max-w-md mx-auto h-[70vh] overflow-hidden rounded-lg">
                     <Image
-                        src="/placeholder.svg?height=800&width=1600"
-                        alt="Mes pâtisseries"
+                        src="/hero-section.jpg" // Remplacez par le chemin correct de votre image
+                        alt="Dessin de moi dans une pâtisserie style Ghibli"
                         fill
                         className="object-cover"
                         priority
