@@ -90,7 +90,7 @@ export default function CreationsSection() {
                     </p>
                 </div>
                 <div className="mx-auto grid max-w-5xl gap-6 py-12 md:grid-cols-2 lg:grid-cols-3">
-                    {creations.map((item, index) => (
+                    {creations ?creations.map((item, index) => (
                         <Card
                             key={index}
                             ref={(el) => {
@@ -110,7 +110,7 @@ export default function CreationsSection() {
                                 <h3 className="text-lg font-medium text-primary">{item.title}</h3>
                             </CardContent>
                         </Card>
-                    ))}
+                    )): <h1 className="text-center text-muted-foreground">Aucune création trouvée.</h1>}
                 </div>
             </div>
         </section>

@@ -54,7 +54,7 @@ const HeroSection = () => {
             <div className="container px-4 md:px-6 mt-12 text-center">
                 <div className="relative w-full max-w-md mx-auto h-[70vh] overflow-hidden rounded-lg">
                     <Image
-                        src="/hero-section.jpg" // Remplacez par le chemin correct de votre image
+                        src="/hero-section.jpg"
                         alt="Dessin de moi dans une pâtisserie style Ghibli"
                         fill
                         className="object-cover"
