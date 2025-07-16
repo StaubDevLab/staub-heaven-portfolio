@@ -41,8 +41,7 @@ const HeroSection = () => {
                             Hello, je suis Guillaume <span ref={handRef} className="inline-block ">👋🏻</span> 🧑🏻‍🍳
                         </h1>
                         <p className="mx-auto max-w-[700px] text-muted md:text-xl">
-                            Portfolio culinaire - Recherche une entreprise pour un CAP Pâtisserie à partir de septembre
-                            2025.
+                            Portfolio culinaire - Recherche une entreprise pour reprendre la cuisine 🔥. 
                         </p>
                     </div>
                     <div className="w-full max-w-sm h-full space-y-2">

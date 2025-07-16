@@ -69,7 +69,7 @@ const AboutSection = () => {
                             </p>
                             <p className="text-black">
                                 À 33 ans, après avoir traversé des tempêtes et gravi des échelons loin de mes rêves,
-                                je me réinvente à travers un CAP Pâtissier en alternance,
+                                je me réinvente à travers la cuisine,
                                 porté par une passion intacte et une détermination farouche.<br/>
                                 Mon ambition ? Mettre à profit mes compétences variées – rigueur, créativité, gestion d’équipe,
                                 adaptabilité -, ainsi que ma résilience forgée au fil de 15 ans d’expériences professionnelles diversifiées,
@@ -78,7 +78,7 @@ const AboutSection = () => {
                                 grâce à un espace chaleureux et propice aux échanges, s’inspirant des diners ruraux américains🇺🇸,
                                 où les pâtisseries sous cloche s’entourent de plats savoureux et copieux,
                                 dans une ambiance empreinte des arômes de café et de pancakes tout juste sortis de la poêle🥞.<br/>
-                                Plus qu’un métier, c’est une renaissance – une quête de sens et un retour aux sources pour créer des desserts qui portent mon vécu,
+                                Plus qu’un métier, c’est une renaissance – une quête de sens et un retour aux sources pour créer des plats qui portent mon vécu,
                                 contribuer à un savoir-faire artisanal d’exception et partager une douceur tangible avec le monde.
                             </p>
                         </div>

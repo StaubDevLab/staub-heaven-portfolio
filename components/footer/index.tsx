@@ -9,7 +9,7 @@ const Footer = () => {
                         <span className="text-xl font-serif font-medium text-white">Guillaume Staub</span>
                     </div>
                     <p className="text-sm text-white/70">
-                        © {new Date().getFullYear()} Portfolio professionnel - Candidature en alternance pâtisserie
+                        © {new Date().getFullYear()} Portfolio professionnel - Recherche un poste ou une alternance en cuisine
                     </p>
                 </div>
             </div>
