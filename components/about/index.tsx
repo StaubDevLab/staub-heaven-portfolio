@@ -65,7 +65,7 @@ const AboutSection = () => {
                                 Ma passion pour la cuisine
                             </h2>
                             <p className="text-muted md:text-xl">
-                                Fort d&apos;un parcours riche et atypique, et d&apos;un BEP cuisine décroché en une seule année à 16 ans, je souhaite m&apos;investir pleinement dans une formation en apprentissage en pâtisserie pour concrétiser une passion qui m&apos;anime depuis l&apos;adolescence.
+                                Fort d&apos;un parcours riche et atypique, et d&apos;un BEP cuisine décroché en une seule année à 16 ans, je souhaite m&apos;investir pleinement  en cuisine pour concrétiser une passion qui m&apos;anime depuis l&apos;adolescence.
                             </p>
                             <p className="text-black">
                                 À 33 ans, après avoir traversé des tempêtes et gravi des échelons loin de mes rêves,
